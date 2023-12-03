@@ -39,8 +39,8 @@ namespace day_02 {
                 accPartTwo += cubeMaxCnt.Values.Aggregate((left, right) => left * right);
             }
 
-            Console.WriteLine(accPartOne);
-            Console.WriteLine(accPartTwo);
+            Console.WriteLine($"Part one: {accPartOne}");
+            Console.WriteLine($"Part two: {accPartTwo}");
         }
     }
 }
