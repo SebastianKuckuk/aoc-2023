@@ -11,8 +11,8 @@ namespace day_06 {
 
             var regExNumbers = new Regex(@" +(\d+)");
 
-            var times = regExNumbers.Matches(input[0]).Cast<Match>().Select(m => int.Parse(m.Groups[1].Value)).ToArray();
-            var distances = regExNumbers.Matches(input[1]).Cast<Match>().Select(m => int.Parse(m.Groups[1].Value)).ToArray();
+            var times = regExNumbers.Matches(input[0]).Cast<Match>().Select(m => long.Parse(m.Groups[1].Value)).ToArray();
+            var distances = regExNumbers.Matches(input[1]).Cast<Match>().Select(m => long.Parse(m.Groups[1].Value)).ToArray();
 
             long numPossibilities(long maxTime, long maxDist) {
                 // var acc = 0;
@@ -31,7 +31,7 @@ namespace day_06 {
                 return (long)(Math.Ceiling(right) - Math.Floor(left) - 1);
             }
 
-            var accPartOne = times.Zip(distances, Tuple.Create).Aggregate(1, (current, td) => (int)(current * numPossibilities(td.Item1, td.Item2)));
+            var accPartOne = times.Zip(distances, Tuple.Create).Aggregate(1L, (current, td) => current * numPossibilities(td.Item1, td.Item2));
 
             var accPartTwo = numPossibilities(
                     long.Parse(regExNumbers.Matches(input[0]).Cast<Match>().Select(m => m.Groups[1].Value).Aggregate((a, b) => a + b)),
